@@ -2,12 +2,13 @@ import type {
   PriorityColorsType,
   selectedTaskIdType,
 } from "./App.tsx";
+import {TaskStatus, type TaskType} from "./types/types.ts";
 
 type Props = {
-  task: any
+  task: TaskType
   selectedTaskId: selectedTaskIdType
   priorityColors: PriorityColorsType
-  onTaskSelected: (id: number) => void
+  onTaskSelected: (id: string) => void
 }
 
 export const Task = ({task, priorityColors, selectedTaskId, onTaskSelected}: Props) => {
@@ -17,8 +18,11 @@ export const Task = ({task, priorityColors, selectedTaskId, onTaskSelected}: Pro
       <li style={{ color: priorityColors[task.attributes.priority], border: selectedTaskId === task.id ? '1px solid blue' : 'none'}}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
           <h3 style={{ margin: 0 }}>Заголовок: </h3>
-          <p onClick={() => {onTaskSelected(task.id)}}
-             style={{textDecorationLine: task.attributes.status === 2 ? "line-through" : "none"}}
+          <p onClick={() => {
+            // debugger
+            onTaskSelected(task.id)
+          }}
+             style={{textDecorationLine: task.attributes.status === TaskStatus.Completed ? "line-through" : "none"}}
           >
             {task.attributes.title}
           </p>

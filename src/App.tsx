@@ -1,15 +1,9 @@
 import {TasksList} from "./TasksList.tsx";
-import './lesson.ts'
+import './lesson.js'
 import {useEffect, useState} from "react";
+import type {TaskType} from "./types/types.ts";
 
-// export type TasksType = {
-//   id: number
-//   title: string
-//   isDone: boolean
-//   priority: number
-// }
-
-export type selectedTaskIdType = null | number
+export type selectedTaskIdType = null | string
 
 export type PriorityColorsType = {
   [key: number]: string;
@@ -23,20 +17,13 @@ const priorityColors: PriorityColorsType = {
   4: '#ff6700',
 }
 
-  // const tasks: TasksType[] = [
-  //   { id: 1, title: "Купить продукты на неделю", isDone: false, priority: 2 },
-  //   { id: 2, title: "Полить цветы", isDone: true, priority: 1 },
-  //   { id: 3, title: "Сходить на тренировку", isDone: false, priority: 0, },
-  //   { id: 4, title: "Срочно отправить рабочий отчет", isDone: true, priority: 3, },
-  //   { id: 5, title: "Заплатить за коммунальные услуги", isDone: false, priority: 4, },
-  // ]
-
 function App() {
 
   const [selectedTaskId, setSelectedTaskId] = useState<selectedTaskIdType>(null)
-  const [tasks, setTasks] = useState(null)
+  const [tasks, setTasks] = useState<TaskType[] | null>(null)
 
   console.log(tasks)
+  console.log(selectedTaskId)
 
   useEffect(() => {
     fetch('https://trelly.it-incubator.app/api/1.0/boards/tasks', {
@@ -48,11 +35,12 @@ function App() {
       .then(data => setTasks(data.data))
   }, [])
 
-  const onTaskSelected = (id: number) => {
+  const onTaskSelected = (id: string) => {
+    console.log(id)
     setSelectedTaskId(id)
   }
 
-  if(tasks === null) return <span>Loading...</span>
+  if (tasks === null) return <span>Loading...</span>
 
   if (tasks.length === 0) return <span>{'no tasks'}</span>
 

@@ -3,12 +3,13 @@ import type {
   selectedTaskIdType,
 } from "./App.tsx";
 import {Task} from "./Task.tsx";
+import type {TaskType} from "./types/types.ts";
 
 type Props = {
-  tasks: any[]
+  tasks: TaskType[]
   selectedTaskId: selectedTaskIdType
   priorityColors: PriorityColorsType
-  onTaskSelected: (id: number) => void
+  onTaskSelected: (id: string) => void
 }
 
 export const TasksList = ({tasks, selectedTaskId, priorityColors, onTaskSelected}: Props) => {
