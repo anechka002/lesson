@@ -9,7 +9,7 @@ type Props = {
   tasks: TaskType[]
   selectedTaskId: selectedTaskIdType
   priorityColors: PriorityColorsType
-  onTaskSelected: (id: string) => void
+  onTaskSelected: (id: string, boardId: string) => void
 }
 
 export const TasksList = ({tasks, selectedTaskId, priorityColors, onTaskSelected}: Props) => {

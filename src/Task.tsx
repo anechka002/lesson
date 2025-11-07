@@ -8,7 +8,7 @@ type Props = {
   task: TaskType
   selectedTaskId: selectedTaskIdType
   priorityColors: PriorityColorsType
-  onTaskSelected: (id: string) => void
+  onTaskSelected: (id: string, boardId: string) => void
 }
 
 export const Task = ({task, priorityColors, selectedTaskId, onTaskSelected}: Props) => {
@@ -20,7 +20,7 @@ export const Task = ({task, priorityColors, selectedTaskId, onTaskSelected}: Pro
           <h3 style={{ margin: 0 }}>Заголовок: </h3>
           <p onClick={() => {
             // debugger
-            onTaskSelected(task.id)
+            onTaskSelected(task.id, task.attributes.boardId)
           }}
              style={{textDecorationLine: task.attributes.status === TaskStatus.Completed ? "line-through" : "none"}}
           >

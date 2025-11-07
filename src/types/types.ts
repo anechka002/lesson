@@ -20,6 +20,25 @@ export type TaskType = {
   };
 }
 
+export type TaskDetails = {
+    id: string;
+    type: string;
+    attributes: {
+      title: string;
+      order: number;
+      deadline: string;
+      startDate: string;
+      addedAt: string;
+      priority: number;
+      status: TaskStatus;
+      updatedAt: string;
+      boardId: string;
+      boardTitle: string;
+      description: string;
+      attachments: any[]; // или более специфичный тип, если известна структура вложений
+    };
+}
+
 // Meta information type
 type Meta = {
   page: number;
