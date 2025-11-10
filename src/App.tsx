@@ -24,10 +24,6 @@ function App() {
   const [selectedTask, setSelectedTask] = useState<TaskDetails | null>(null)
   const [tasks, setTasks] = useState<TaskType[] | null>(null)
 
-  console.log(tasks)
-  // console.log(selectedTaskId)
-  // console.log('selectedTask', selectedTask)
-
   useEffect(() => {
     fetch('https://trelly.it-incubator.app/api/1.0/boards/tasks', {
       headers: {
@@ -51,8 +47,8 @@ function App() {
   }
 
   if (tasks === null) return <span>Loading...</span>
-
-  if (tasks.length === 0) return <span>{'no tasks'}</span>
+  //
+  // if (tasks.length === 0) return <span>{'no tasks'}</span>
 
   return (
     <div>
@@ -70,9 +66,10 @@ function App() {
         />
         <div>
           <h3>Task details</h3>
-          {selectedTaskId === null && <div>Задача не выбрана</div>}
-          {selectedTaskId !== null && selectedTask === null && <div>Loading...</div>}
-          {selectedTask !== null && <Detail selectedTask={selectedTask}/>}
+          {!selectedTask && !selectedTaskId && <div>Задача не выбрана</div>}
+          {!selectedTask && selectedTaskId && <div>Loading...</div>}
+          {/*{selectedTask && selectedTaskId && selectedTaskId !== selectedTask.id && 'Loading...'}*/}
+          {selectedTask && selectedTask.id === selectedTaskId && <Detail selectedTask={selectedTask}/>}
         </div>
       </div>
     </div>
