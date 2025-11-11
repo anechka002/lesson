@@ -23,6 +23,7 @@ function App() {
   const [selectedTaskId, setSelectedTaskId] = useState<selectedTaskIdType>(null)
   const [selectedTask, setSelectedTask] = useState<TaskDetails | null>(null)
   const [tasks, setTasks] = useState<TaskType[] | null>(null)
+  const [boardId, setBoardId] = useState<string | null>(null)
 
   useEffect(() => {
     fetch('https://trelly.it-incubator.app/api/1.0/boards/tasks', {
@@ -34,21 +35,24 @@ function App() {
       .then(data => setTasks(data.data))
   }, [])
 
-  const onTaskSelected = (id: string, boardId: string) => {
-    setSelectedTaskId(id)
-    setSelectedTask(null)
-    fetch(`https://trelly.it-incubator.app/api/1.0/boards/${boardId}/tasks/${id}`, {
+  useEffect(() => {
+    if(!boardId || !selectedTaskId) return
+    fetch(`https://trelly.it-incubator.app/api/1.0/boards/${boardId}/tasks/${selectedTaskId}`, {
       headers: {
         'api-key': 'e89a9a5a-8ec8-4868-866c-0e822747b9ad'
       }
     })
       .then(res => res.json())
       .then(data => setSelectedTask(data.data))
+  }, [selectedTaskId, boardId])
+
+  const onTaskSelected = (id: string, boardId: string) => {
+    setSelectedTaskId(id)
+    setSelectedTask(null)
+    setBoardId(boardId)
   }
 
   if (tasks === null) return <span>Loading...</span>
-  //
-  // if (tasks.length === 0) return <span>{'no tasks'}</span>
 
   return (
     <div>
