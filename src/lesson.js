@@ -126,15 +126,78 @@
 // console.log('secondCourse', secondCourse)
 // console.log('firstSecondCourse', firstSecondCourse)
 // ================================
-// const colors = ["красный", "синий", "зелёный", "жёлтый", "фиолетовый"]
+const colors = ["красный", "синий", "зелёный", "жёлтый", "фиолетовый"]
 //
 // // 1. Найди цвета с четными индексами (0, 2, 4...)
-// const evenIndexColors = colors.filter((_, index) => index % 2 === 0)
+const evenIndexColors = colors.filter((_, index) => index % 2 === 0)
 //
 // // 2. Найди первый цвет, индекс которого больше 2
-// const colorAfterIndex2 = colors.find((_, index) => index > 2)
-//
+const colorAfterIndex2 = colors.find((_, index) => index > 2)
+
 // console.log('evenIndexColors', evenIndexColors)
 // console.log('colorAfterIndex2', colorAfterIndex2)
+// ================================
+// console.log(true && "Hello") // ? Hello
+// console.log(false && "World") // ? false
+// console.log("" && "JavaScript") // ?
+// console.log("React" && "Vue") // ?
+// console.log(5 && 10) // ?
+// console.log(0 && 100) // ?
+// console.log(null && "Test") // ?
+// console.log(undefined && 42) // ?
+
+
+// console.log("A" && "B" && "C") // ?
+// console.log("X" && "" && "Z") // ?
+// console.log(1 && 2 && 0 && 4) // ?
+// console.log(true && "Yes" && 7) // ?
+
+
+// console.log(false || "Default") // ?
+// console.log("" || "Fallback") // ?
+// console.log(null || "Backup") // ?
+// console.log("First" || "Second") // ?
+// console.log(0 || 42) // ?
+// console.log(undefined || "Value") // ?
+
+
+// console.log("" || 0 || "Found") // ?
+// console.log(false || null || "OK") // ?
+// console.log(undefined || "" || 0 || "Final") // ?
+// console.log("Start" || false || "End") // ?
+
+
+// console.log("A" && ("B" || "C")) // ? 
+// console.log(false || ("X" && "Y")) // ? 
+// console.log(("" && "Test") || "Default") // ? 
+// console.log("Hi" || (false && "Bye")) // ? 
+// console.log((true && "Yes") || "No") // ? 
+// console.log(null || (0 && "Zero")) // ? 
+
+
+// console.log("A" || ("B" && "C")) // ?
+// console.log(("A" || "B") && "C") // ?
+// console.log(("A" && "B") || ("C" && "D")) // ?
+// console.log((false && true) || (true && "Result")) // ?
+
+
+// function getUserName(user) {
+//   return user.name || "Гость"
+// }
+
+// // Тесты:
+// console.log(getUserName({ name: "Анна" })) // "Анна"
+// console.log(getUserName({})) // "Гость"
+// console.log(getUserName({ name: "" })) // "Гость"
+
+
+// function canAccess(user, resource) {
+//   return user.isAuth && (user.role === "admin" || user.id === resource.owner)
+// }
+
+// // Тесты:
+// console.log(canAccess({ isAuth: true, role: "admin" }, { owner: "user1" })) // true
+// console.log(canAccess({ isAuth: true, id: "user1" }, { owner: "user1" })) // true
+// console.log(canAccess({ isAuth: false, role: "admin" }, { owner: "user1" })) // false
 // ================================
 
