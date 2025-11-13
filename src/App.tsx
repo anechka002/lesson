@@ -3,6 +3,7 @@ import './lesson.js'
 import {useEffect, useState} from "react";
 import type {TaskDetails, TaskType} from "./types/types.ts";
 import {Detail} from "./Detail.tsx";
+import {InputTitle} from './InputTitle.tsx'
 
 export type selectedTaskIdType = null | string
 
@@ -56,6 +57,7 @@ function App() {
 
   return (
     <div>
+      <InputTitle/>
       <h1>Список дел</h1>
       <button onClick={() => {
         setSelectedTaskId(null)
