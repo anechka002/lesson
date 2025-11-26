@@ -1,4 +1,4 @@
-import React, { useEffect, useState, type ChangeEvent } from 'react'
+import { useEffect, useState, type ChangeEvent } from 'react'
 
 export const InputTitle = () => {
   const [text, setText] = useState('')
