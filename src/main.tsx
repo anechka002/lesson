@@ -8,8 +8,9 @@ import {Footer} from "./components/Footer.tsx";
 import {PageTitle} from "./components/PageTitle.tsx";
 import {Users} from "./home/UserCard.tsx";
 import {App1} from "./home/App1.tsx";
+import {Game} from "./home/Game.tsx";
 
-createRoot(document.getElementById('root')!).render(<App1 />)
+createRoot(document.getElementById('root')!).render(<Game />)
 
 function MainPage () {
   return (
