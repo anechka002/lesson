@@ -1,5 +1,5 @@
 import {Task} from "./Task.tsx";
-import type {TaskType} from "./types/types.ts";
+import type {TaskType} from "../types/types.ts";
 import {useEffect, useState} from "react";
 
 type Props = {

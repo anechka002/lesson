@@ -2,7 +2,7 @@ import {
   type PriorityColorsType,
   TaskStatus,
   type TaskType
-} from "./types/types.ts";
+} from "../types/types.ts";
 
 const priorityColors: PriorityColorsType = {
   0: '#ffffff',

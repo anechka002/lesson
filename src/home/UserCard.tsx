@@ -1,5 +1,13 @@
+type UsersType = {
+  id: number
+  name: string
+  age: number
+  email: string
+  avatar?: string
+}
+
 export function Users() {
-  const users = [
+  const users: UsersType[] = [
     {
       id: 1,
       name: "John",
@@ -32,7 +40,7 @@ export function Users() {
   )
 }
 
-const UserCard = (props) => {
+const UserCard = (props: {user: UsersType}) => {
   const defaultAvatar = 'https://placehold.co/128?text=no+photo'
 
   return (

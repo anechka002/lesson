@@ -2,7 +2,7 @@ import {useState} from "react";
 import {Congratulations} from "./Congratulations.tsx";
 import {GameOver} from "./GameOver.tsx";
 
-export function Elephant(props) {
+export function Elephant(props: {onReset: () => void}) {
   const [weight, setWeight] = useState(100)
 
   const handleFeedHealthyFood = () => {

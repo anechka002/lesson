@@ -1,6 +1,7 @@
 import {useState} from "react";
+import type {Products} from "./App1.tsx";
 
-export const ProductItem = (props) => {
+export const ProductItem = (props: {product: Products}) => {
   console.log('🧺 ProductItem')
 
   const [inCart, setInCart] = useState(false);

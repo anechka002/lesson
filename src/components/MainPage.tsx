@@ -1,6 +1,6 @@
 import {useState} from "react";
-import {TasksList} from "../TasksList.tsx";
-import {Detail} from "../Detail.tsx";
+import {TasksList} from "./TasksList.tsx";
+import {Detail} from "./Detail.tsx";
 
 export function MainPage() {
 

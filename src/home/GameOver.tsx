@@ -1,4 +1,4 @@
-export const GameOver = (props) => {
+export const GameOver = (props: {onReset: () => void}) => {
   const handleClick = () => {
     props.onReset()
   }

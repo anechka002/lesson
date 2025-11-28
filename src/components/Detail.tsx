@@ -1,4 +1,4 @@
-import type {TaskDetails} from "./types/types.ts";
+import type {TaskDetails} from "../types/types.ts";
 import {useEffect, useState} from "react";
 
 type Props = {

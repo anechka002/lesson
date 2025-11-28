@@ -1,6 +1,6 @@
 import {useState} from "react";
 
-export function Counter(props) {
+export function Counter(props: {onFinish: () => void}) {
   const [value, setValue] = useState(1);
 
   const handleClick = () => {

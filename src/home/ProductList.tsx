@@ -1,6 +1,7 @@
 import {ProductItem} from "./ProductItem.tsx";
+import type {Products} from "./App1.tsx";
 
-export const ProductList = (props) => {
+export const ProductList = (props: {items: Products[]}) => {
   console.log('📋 ProductList')
   return (
     <>

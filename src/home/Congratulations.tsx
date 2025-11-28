@@ -1,4 +1,4 @@
-export const Congratulations = (props) => {
+export const Congratulations = (props: {onReset: () => void}) => {
   const handleClick = () => {
     props.onReset()
   }
