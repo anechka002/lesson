@@ -1,5 +1,5 @@
 import {Task} from "./Task.tsx";
-import type {TaskType} from "../types/types.ts";
+import type {GlobalTaskListItemJsonApiData} from "../types/types.ts";
 import {useEffect, useState} from "react";
 
 type Props = {
@@ -8,7 +8,7 @@ type Props = {
 }
 
 export const TasksList = ({onTaskSelect, selectedTaskId}: Props) => {
-  const [tasks, setTasks] = useState<TaskType[] | null>(null)
+  const [tasks, setTasks] = useState<GlobalTaskListItemJsonApiData[] | null>(null)
 
   useEffect(() => {
     fetch('https://trelly.it-incubator.app/api/1.0/boards/tasks', {
@@ -24,7 +24,7 @@ export const TasksList = ({onTaskSelect, selectedTaskId}: Props) => {
     onTaskSelect(id, boardId)
   }
 
-  const handleResetClick = ( ) => {
+  const handleResetClick = () => {
     onTaskSelect(null, null)
   }
 

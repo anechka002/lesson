@@ -1,7 +1,7 @@
 import {
   type PriorityColorsType,
   TaskStatus,
-  type TaskType
+  type GlobalTaskListItemJsonApiData
 } from "../types/types.ts";
 
 const priorityColors: PriorityColorsType = {
@@ -13,7 +13,7 @@ const priorityColors: PriorityColorsType = {
 }
 
 type Props = {
-  task: TaskType
+  task: GlobalTaskListItemJsonApiData
   onTaskSelect: (id: string, boardId: string) => void
   isSelected: boolean
 }

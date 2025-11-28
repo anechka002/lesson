@@ -11,7 +11,7 @@ export enum TaskStatus {
 }
 
 // Individual task type
-export type TaskType = {
+export type GlobalTaskListItemJsonApiData = {
   id: string;
   type: "tasks";
   attributes: {
@@ -24,7 +24,7 @@ export type TaskType = {
   };
 }
 
-export type TaskDetails = {
+export type TaskDetailsData = {
     id: string;
     type: string;
     attributes: {
@@ -39,7 +39,7 @@ export type TaskDetails = {
       boardId: string;
       boardTitle: string;
       description: string;
-      attachments: any[]; // или более специфичный тип, если известна структура вложений
+      attachments: string[];
     };
 }
 
@@ -53,6 +53,6 @@ type Meta = {
 
 // Complete response type
 export type TasksResponse = {
-  data: TaskType[];
+  data: GlobalTaskListItemJsonApiData[];
   meta: Meta;
 }

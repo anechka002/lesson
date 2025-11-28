@@ -1,4 +1,4 @@
-import type {TaskDetails} from "../types/types.ts";
+import type {TaskDetailsData} from "../types/types.ts";
 import {useEffect, useState} from "react";
 
 type Props = {
@@ -7,7 +7,7 @@ type Props = {
 }
 
 export const Detail = ({selectedTaskId, boardId}: Props) => {
-  const [selectedTask, setSelectedTask] = useState<TaskDetails | null>(null)
+  const [selectedTask, setSelectedTask] = useState<TaskDetailsData | null>(null)
 
   useEffect(() => {
     if(!boardId || !selectedTaskId) {
