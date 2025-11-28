@@ -52,7 +52,7 @@ type Meta = {
 }
 
 // Complete response type
-export type TasksResponse = {
+export type GlobalTaskListResponse = {
   data: GlobalTaskListItemJsonApiData[];
   meta: Meta;
 }

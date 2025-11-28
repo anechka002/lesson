@@ -1,6 +1,6 @@
 import './lesson.js'
-import {InputTitle} from './components/InputTitle.tsx'
-import {MainPage} from "./components/MainPage.tsx";
+import {InputTitle} from './ui/InputTitle.tsx'
+import {MainPage} from "./ui/MainPage.tsx";
 
 function App() {
   return (

@@ -1,12 +1,13 @@
 import type {TaskDetailsData} from "../types/types.ts";
 import {useEffect, useState} from "react";
+import {getTask} from "../dal/api.ts";
 
 type Props = {
   selectedTaskId: string | null
   boardId: string | null
 }
 
-export const Detail = ({selectedTaskId, boardId}: Props) => {
+export const DetailTask = ({selectedTaskId, boardId}: Props) => {
   const [selectedTask, setSelectedTask] = useState<TaskDetailsData | null>(null)
 
   useEffect(() => {
@@ -14,13 +15,7 @@ export const Detail = ({selectedTaskId, boardId}: Props) => {
       setSelectedTask(null)
       return
     }
-    fetch(`https://trelly.it-incubator.app/api/1.0/boards/${boardId}/tasks/${selectedTaskId}`, {
-      headers: {
-        'api-key': 'e89a9a5a-8ec8-4868-866c-0e822747b9ad'
-      }
-    })
-      .then(res => res.json())
-      .then(data => setSelectedTask(data.data))
+    getTask(boardId, selectedTaskId).then(data => setSelectedTask(data.data))
   }, [selectedTaskId, boardId])
 
   const description = selectedTask?.attributes.description ? selectedTask.attributes.description  : 'no description'

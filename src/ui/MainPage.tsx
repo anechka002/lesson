@@ -1,6 +1,6 @@
 import {useState} from "react";
 import {TasksList} from "./TasksList.tsx";
-import {Detail} from "./Detail.tsx";
+import {DetailTask} from "./DetailTask.tsx";
 
 export function MainPage() {
 
@@ -19,7 +19,7 @@ export function MainPage() {
         onTaskSelect={handleTaskSelect}
       />
       <hr />
-      <Detail
+      <DetailTask
         selectedTaskId={taskId}
         boardId={boardId}
       />

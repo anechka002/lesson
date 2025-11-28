@@ -1,6 +1,7 @@
 import {Task} from "./Task.tsx";
 import type {GlobalTaskListItemJsonApiData} from "../types/types.ts";
 import {useEffect, useState} from "react";
+import {getTasks} from "../dal/api.ts";
 
 type Props = {
   selectedTaskId: string | null
@@ -11,13 +12,7 @@ export const TasksList = ({onTaskSelect, selectedTaskId}: Props) => {
   const [tasks, setTasks] = useState<GlobalTaskListItemJsonApiData[] | null>(null)
 
   useEffect(() => {
-    fetch('https://trelly.it-incubator.app/api/1.0/boards/tasks', {
-      headers: {
-        'api-key': 'e89a9a5a-8ec8-4868-866c-0e822747b9ad'
-      }
-    })
-      .then(res => res.json())
-      .then(data => setTasks(data.data))
+    getTasks().then(data => setTasks(data.data))
   }, [])
 
   const handleTaskSelect = (id: string, boardId: string) => {
