@@ -1,29 +1,14 @@
-import type {
-  PriorityColorsType,
-  selectedTaskIdType,
-} from "./App.tsx";
 import {Task} from "./Task.tsx";
 import type {TaskType} from "./types/types.ts";
 import {useEffect, useState} from "react";
 
-const priorityColors: PriorityColorsType = {
-  0: '#ffffff',
-  1: '#ffd7b5',
-  2: '#ffb38a',
-  3: '#ff9248',
-  4: '#ff6700',
+type Props = {
+  selectedTaskId: string | null
+  onTaskSelect: (id: string | null, boardId: string | null) => void
 }
 
-// type Props = {
-  // selectedTaskId: selectedTaskIdType
-  // priorityColors: PriorityColorsType
-  // onTaskSelected: (id: string, boardId: string) => void
-// }
-
-export const TasksList = () => {
+export const TasksList = ({onTaskSelect, selectedTaskId}: Props) => {
   const [tasks, setTasks] = useState<TaskType[] | null>(null)
-  const [selectedTaskId, setSelectedTaskId] = useState<selectedTaskIdType>(null)
-  // const [boardId, setBoardId] = useState<string | null>(null)
 
   useEffect(() => {
     fetch('https://trelly.it-incubator.app/api/1.0/boards/tasks', {
@@ -35,21 +20,24 @@ export const TasksList = () => {
       .then(data => setTasks(data.data))
   }, [])
 
-  const onTaskSelected = (id: string) => {
-    setSelectedTaskId(id)
-    // setSelectedTask(null)
-    // setBoardId(boardId)
+  const handleTaskSelect = (id: string, boardId: string) => {
+    onTaskSelect(id, boardId)
+  }
+
+  const handleResetClick = ( ) => {
+    onTaskSelect(null, null)
   }
 
   if (tasks === null) return <span>Loading...</span>
 
   return (
-    <>
+    <div>
+      <button onClick={handleResetClick}>reset</button>
       <ul>
         {tasks.map((task) => (
-          <Task priorityColors={priorityColors} task={task} key={task.id} selectedTaskId={selectedTaskId} onTaskSelected={onTaskSelected}/>
+          <Task task={task} key={task.id} isSelected={selectedTaskId === task.id} onTaskSelect={handleTaskSelect}/>
         ))}
       </ul>
-    </>
+    </div>
   );
 };

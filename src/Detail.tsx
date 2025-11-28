@@ -1,21 +1,19 @@
 import type {TaskDetails} from "./types/types.ts";
-// import {InputTitle} from "./InputTitle.tsx";
 import {useEffect, useState} from "react";
-// import type {selectedTaskIdType} from "./App.tsx";
 
-// type Props = {
-//   selectedTask: TaskDetails | null
-// }
+type Props = {
+  selectedTaskId: string | null
+  boardId: string | null
+}
 
-export const Detail = () => {
+export const Detail = ({selectedTaskId, boardId}: Props) => {
   const [selectedTask, setSelectedTask] = useState<TaskDetails | null>(null)
-  // const [boardId, setBoardId] = useState<string | null>(null)
-  // const [selectedTaskId, setSelectedTaskId] = useState<selectedTaskIdType>(null)
-  const selectedTaskId = "4f310604-82b5-4afd-b9a4-ddf12dfac0a3"
-  const boardId = "13923117-72de-4788-a7f0-4c42f162a5ab"
 
   useEffect(() => {
-    if(!boardId || !selectedTaskId) return
+    if(!boardId || !selectedTaskId) {
+      setSelectedTask(null)
+      return
+    }
     fetch(`https://trelly.it-incubator.app/api/1.0/boards/${boardId}/tasks/${selectedTaskId}`, {
       headers: {
         'api-key': 'e89a9a5a-8ec8-4868-866c-0e822747b9ad'
