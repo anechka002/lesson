@@ -1,7 +1,5 @@
 import {Task} from "./Task.tsx";
-import type {GlobalTaskListItemJsonApiData} from "../types/types.ts";
-import {useEffect, useState} from "react";
-import {getTasks} from "../dal/api.ts";
+import {useTasks} from "../bll/useTasks.ts";
 
 type Props = {
   selectedTaskId: string | null
@@ -9,11 +7,7 @@ type Props = {
 }
 
 export const TasksList = ({onTaskSelect, selectedTaskId}: Props) => {
-  const [tasks, setTasks] = useState<GlobalTaskListItemJsonApiData[] | null>(null)
-
-  useEffect(() => {
-    getTasks().then(data => setTasks(data.data))
-  }, [])
+  const {tasks} = useTasks()
 
   const handleTaskSelect = (id: string, boardId: string) => {
     onTaskSelect(id, boardId)

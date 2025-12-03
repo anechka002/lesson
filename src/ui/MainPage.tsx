@@ -1,11 +1,10 @@
-import {useState} from "react";
 import {TasksList} from "./TasksList.tsx";
 import {DetailTask} from "./DetailTask.tsx";
+import {useTaskSelection} from "../bll/useTaskSelection.ts";
 
 export function MainPage() {
 
-  const [taskId, setTaskId] = useState<string | null>(null);
-  const [boardId, setBoardId] = useState<string | null>(null)
+  const {setTaskId, taskId, boardId, setBoardId} = useTaskSelection()
 
   const handleTaskSelect = (id: string | null, boardId: string | null) => {
     setTaskId(id)
