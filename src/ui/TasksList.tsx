@@ -24,7 +24,7 @@ export const TasksList = ({onTaskSelect, selectedTaskId}: Props) => {
       <button onClick={handleResetClick}>reset</button>
       <ul>
         {tasks.map((task) => (
-          <Task task={task} key={task.id} isSelected={selectedTaskId === task.id} onTaskSelect={handleTaskSelect}/>
+          <Task key={task.id} task={task} isSelected={selectedTaskId === task.id} onTaskSelect={handleTaskSelect}/>
         ))}
       </ul>
     </div>

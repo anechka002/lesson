@@ -1,7 +1,3 @@
-export type PriorityColorsType = {
-  [key: number]: string;
-};
-
 // Optional: Enums for known status and priority values
 export enum TaskStatus {
   Pending = 0,

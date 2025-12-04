@@ -1,17 +1,18 @@
 import {useDetailTask} from "../bll/useDetailTask.ts";
+import style from './TaskDetail.module.css'
 
 type Props = {
   selectedTaskId: string | null
   boardId: string | null
 }
 
-export const DetailTask = ({selectedTaskId, boardId}: Props) => {
+export const TaskDetail = ({selectedTaskId, boardId}: Props) => {
   const {taskDetails} = useDetailTask(selectedTaskId, boardId)
 
   const description = taskDetails?.attributes.description ? taskDetails.attributes.description  : 'no description'
 
   return (
-    <div>
+    <div className={style.task}>
       <h3>Task details</h3>
       {!taskDetails && !selectedTaskId && <div>Задача не выбрана</div>}
       {!taskDetails && selectedTaskId && <div>Loading...</div>}

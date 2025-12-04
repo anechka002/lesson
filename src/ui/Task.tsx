@@ -1,16 +1,9 @@
 import {
-  type PriorityColorsType,
   TaskStatus,
   type GlobalTaskListItemJsonApiData
 } from "../types/types.ts";
-
-const priorityColors: PriorityColorsType = {
-  0: '#ffffff',
-  1: '#ffd7b5',
-  2: '#ffb38a',
-  3: '#ff9248',
-  4: '#ff6700',
-}
+import style from './Task.module.css'
+import clsx from "clsx"
 
 type Props = {
   task: GlobalTaskListItemJsonApiData
@@ -24,25 +17,27 @@ export const Task = ({task, isSelected, onTaskSelect}: Props) => {
     onTaskSelect(task.id, task.attributes.boardId)
   }
 
+  const titleClassName = clsx({
+    [style.title]: task.attributes.status === TaskStatus.Completed,
+  })
+
+  const taskClassName = clsx({
+    [style.task]: true,
+    [style.default]: !isSelected,
+    [style.selected]: isSelected,
+    [style.highPriority]: task.attributes.status === TaskStatus.Completed,
+  })
+
   return (
-    <>
-      <li style={{ color: priorityColors[task.attributes.priority], border: isSelected ? '1px solid blue' : 'none'}}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
-          <h3 style={{ margin: 0 }}>Заголовок: </h3>
-          <p onClick={handleClick}
-             style={{textDecorationLine: task.attributes.status === TaskStatus.Completed ? "line-through" : "none"}}
-          >
-            {task.attributes.title}
-          </p>
-        </div>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <h3 style={{ margin: 0 }}>Статус: </h3>
-          <input type="checkbox" checked={task.attributes.status === 2} readOnly/>
-        </div>
-        <p>
-          <b>Дата создания задачи</b>: {new Date(task.attributes.addedAt).toLocaleDateString()}
+    <div className={taskClassName}>
+        <p onClick={handleClick}>
+          <b>Заголовок: </b><span className={titleClassName}>{task.attributes.title}</span>
         </p>
-      </li>
-    </>
+        <b>Статус: </b>
+        <input type="checkbox" checked={task.attributes.status === 2} readOnly/>
+      <p>
+        <b>Дата создания задачи</b>: {new Date(task.attributes.addedAt).toLocaleDateString()}
+      </p>
+    </div>
   );
 };

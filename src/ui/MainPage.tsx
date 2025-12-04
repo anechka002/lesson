@@ -1,6 +1,7 @@
 import {TasksList} from "./TasksList.tsx";
-import {DetailTask} from "./DetailTask.tsx";
+import {TaskDetail} from "./TaskDetail.tsx";
 import {useTaskSelection} from "../bll/useTaskSelection.ts";
+import styles from "./MainPage.module.css";
 
 export function MainPage() {
 
@@ -12,13 +13,13 @@ export function MainPage() {
   }
 
   return (
-    <div style={{display: 'flex', gap: '30px'}}>
+    <div className={styles.container}>
       <TasksList
         selectedTaskId={taskId}
         onTaskSelect={handleTaskSelect}
       />
       <hr />
-      <DetailTask
+      <TaskDetail
         selectedTaskId={taskId}
         boardId={boardId}
       />
